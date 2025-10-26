@@ -16,37 +16,71 @@ export default async function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex justify-between items-center">
             <div>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-3 shadow-lg">
+                <span>🏆</span>
+                <span>달성군 정책 제안 공모전 출품작</span>
+              </div>
               <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                정책 제안서
+                선셋 프로토콜
               </h1>
               <p className="mt-2 text-sm text-gray-600 font-medium">
-                2025년 달성군 정책제안 공모전
+                정책 일몰제 도입 및 AI 감사 시스템 연계를 통한 예산 낭비 근절
               </p>
             </div>
-            <Link
-              href="/dashboard"
-              className="px-5 py-2.5 bg-gradient-to-r from-gray-500 to-gray-600 text-white rounded-lg hover:from-gray-600 hover:to-gray-700 shadow-lg hover:shadow-xl transition-all font-semibold"
-            >
-              ← 대시보드
-            </Link>
+            <div className="flex gap-3">
+              <Link
+                href="/dashboard"
+                className="px-5 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 shadow-lg hover:shadow-xl transition-all font-semibold"
+              >
+                🏠 대시보드
+              </Link>
+              <Link
+                href="/anomalies"
+                className="px-5 py-2.5 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 shadow-lg hover:shadow-xl transition-all font-semibold"
+              >
+                🚨 이상 징후
+              </Link>
+              <Link
+                href="/projects"
+                className="px-5 py-2.5 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg hover:from-green-600 hover:to-green-700 shadow-lg hover:shadow-xl transition-all font-semibold"
+              >
+                📊 정책 관리
+              </Link>
+            </div>
           </div>
         </div>
       </header>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Hero Section */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl shadow-2xl p-12 text-white mb-8">
-          <div className="text-center">
-            <div className="inline-block bg-white/20 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-              2025 달성군 정책제안 공모전
+        <div className="relative bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-3xl shadow-2xl p-12 text-white mb-8 overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full -ml-48 -mb-48"></div>
+          <div className="relative z-10 text-center">
+            <div className="inline-flex items-center gap-2 bg-white/30 backdrop-blur-sm px-6 py-3 rounded-full text-base font-bold mb-6 shadow-lg border border-white/50">
+              <span className="text-2xl">🏆</span>
+              <span>2025 달성군 정책제안 공모전 출품작</span>
             </div>
-            <h2 className="text-5xl font-bold mb-6">선셋 프로토콜 (Sunset Protocol)</h2>
-            <p className="text-2xl font-semibold text-indigo-100 mb-4">
+            <h2 className="text-6xl font-extrabold mb-6 drop-shadow-lg">선셋 프로토콜</h2>
+            <p className="text-xl font-medium text-indigo-100 mb-2">
+              Sunset Protocol
+            </p>
+            <p className="text-2xl font-semibold text-white/90 mb-4">
               정책 일몰제 도입 및 AI 감사 시스템 연계를 통한
             </p>
-            <p className="text-3xl font-bold">
+            <p className="text-4xl font-extrabold drop-shadow-lg">
               선제적 예산 낭비 근절 방안
             </p>
+            <div className="mt-8 flex justify-center gap-4">
+              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-xl border border-white/30">
+                <p className="text-sm text-indigo-100">제안 부서</p>
+                <p className="text-lg font-bold">혁신행정팀</p>
+              </div>
+              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-xl border border-white/30">
+                <p className="text-sm text-indigo-100">제안 연도</p>
+                <p className="text-lg font-bold">2025년</p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -278,16 +312,27 @@ export default async function AboutPage() {
         </div>
 
         {/* CTA */}
-        <div className="text-center">
+        <div className="bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 rounded-2xl shadow-xl p-8 text-center border border-indigo-200">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">시스템 데모 체험하기</h3>
+          <p className="text-gray-700 mb-6">
+            실제 구현된 AI 감사 시스템과 정책 일몰제 관리 시스템을 직접 체험해보세요
+          </p>
           <Link
             href="/dashboard"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl hover:from-indigo-700 hover:to-purple-700 shadow-2xl hover:shadow-3xl transition-all font-bold text-lg"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl hover:from-indigo-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all font-bold text-lg"
           >
-            시스템 대시보드 바로가기 →
+            <span>🏠</span>
+            <span>시스템 대시보드 바로가기</span>
+            <span>→</span>
           </Link>
-          <p className="mt-4 text-sm text-gray-500">
-            본 시스템은 2025 달성군 정책제안 공모전 출품작입니다
-          </p>
+          <div className="mt-8 pt-6 border-t border-indigo-200">
+            <div className="inline-flex items-center gap-2 bg-white px-6 py-3 rounded-full shadow-md">
+              <span className="text-2xl">🏆</span>
+              <p className="text-sm font-bold text-gray-800">
+                2025 달성군 정책제안 공모전 출품작
+              </p>
+            </div>
+          </div>
         </div>
       </main>
     </div>

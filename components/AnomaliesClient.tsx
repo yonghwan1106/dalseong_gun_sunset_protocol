@@ -77,6 +77,10 @@ export default function AnomaliesClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex justify-between items-center">
             <div>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-600 to-orange-600 text-white px-4 py-1.5 rounded-full text-xs font-bold mb-2 shadow-md">
+                <span>🏆</span>
+                <span>달성군 정책 제안 공모전 출품작</span>
+              </div>
               <h1 className="text-4xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
                 이상 징후 관리
               </h1>
@@ -110,55 +114,60 @@ export default function AnomaliesClient() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Filters */}
-        <div className="bg-white rounded-2xl shadow-xl p-6 mb-6">
-          <h2 className="text-lg font-bold text-gray-900 mb-4">필터</h2>
+        <div className="bg-white rounded-3xl shadow-xl p-6 mb-6 border border-gray-100">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="p-2 bg-blue-100 rounded-xl">
+              <span className="text-xl">🔍</span>
+            </div>
+            <h2 className="text-lg font-bold text-gray-900">필터</h2>
+          </div>
           <div className="flex flex-wrap gap-3">
             <button
               onClick={() => setFilter('all')}
-              className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+              className={`px-5 py-2.5 rounded-xl font-semibold transition-all ${
                 filter === 'all'
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg scale-105'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105'
               }`}
             >
               전체
             </button>
             <button
               onClick={() => setFilter('New')}
-              className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+              className={`px-5 py-2.5 rounded-xl font-semibold transition-all ${
                 filter === 'New'
-                  ? 'bg-red-600 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg scale-105'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105'
               }`}
             >
               🔴 신규
             </button>
             <button
               onClick={() => setFilter('Investigating')}
-              className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+              className={`px-5 py-2.5 rounded-xl font-semibold transition-all ${
                 filter === 'Investigating'
-                  ? 'bg-orange-600 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-gradient-to-r from-orange-600 to-orange-700 text-white shadow-lg scale-105'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105'
               }`}
             >
               🟠 조사 중
             </button>
             <button
               onClick={() => setFilter('Halted')}
-              className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+              className={`px-5 py-2.5 rounded-xl font-semibold transition-all ${
                 filter === 'Halted'
-                  ? 'bg-purple-600 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-gradient-to-r from-purple-600 to-purple-700 text-white shadow-lg scale-105'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105'
               }`}
             >
               🟣 집행 중지
             </button>
             <button
               onClick={() => setFilter('Dismissed')}
-              className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+              className={`px-5 py-2.5 rounded-xl font-semibold transition-all ${
                 filter === 'Dismissed'
-                  ? 'bg-gray-600 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-gradient-to-r from-gray-600 to-gray-700 text-white shadow-lg scale-105'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105'
               }`}
             >
               ⚪ 기각
@@ -167,9 +176,14 @@ export default function AnomaliesClient() {
         </div>
 
         {/* Anomalies List */}
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
           <div className="p-6 bg-gradient-to-r from-red-500 to-orange-500 text-white">
-            <h2 className="text-2xl font-bold">⚠️ 탐지된 이상 징후 ({anomalies.length}건)</h2>
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-white/20 backdrop-blur-sm rounded-xl">
+                <span className="text-2xl">⚠️</span>
+              </div>
+              <h2 className="text-2xl font-bold">탐지된 이상 징후 ({anomalies.length}건)</h2>
+            </div>
           </div>
 
           {anomalies.length === 0 ? (
@@ -185,46 +199,53 @@ export default function AnomaliesClient() {
               {anomalies.map((anomaly) => (
                 <div
                   key={anomaly.AnomalyID}
-                  className="p-6 hover:bg-gray-50 transition-colors"
+                  className="p-6 hover:bg-gradient-to-r hover:from-gray-50 hover:to-transparent transition-all"
                 >
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-3">
-                        <div className={`inline-flex items-center px-3 py-1.5 rounded-full text-sm font-bold border ${getRiskColor(anomaly.RiskScore)}`}>
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className={`inline-flex items-center px-4 py-2 rounded-xl text-sm font-bold border-2 shadow-md ${getRiskColor(anomaly.RiskScore)}`}>
+                          <span className="mr-1">⚠️</span>
                           위험도 {anomaly.RiskScore}/10
                         </div>
-                        <div className="px-3 py-1.5 bg-blue-100 text-blue-800 rounded-full text-sm font-bold">
+                        <div className="px-4 py-2 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 rounded-xl text-sm font-bold border border-blue-200">
                           {getAnomalyTypeLabel(anomaly.AnomalyType)}
                         </div>
-                        <div className={`px-3 py-1.5 rounded-full text-sm font-bold ${getStatusColor(anomaly.Status)}`}>
+                        <div className={`px-4 py-2 rounded-xl text-sm font-bold shadow-md ${getStatusColor(anomaly.Status)}`}>
                           {getStatusLabel(anomaly.Status)}
                         </div>
                       </div>
 
-                      <div className="mb-2">
+                      <div className="mb-3">
                         <span className="text-sm font-semibold text-gray-500">사업 ID:</span>
                         <span className="ml-2 text-lg font-bold text-blue-600">{anomaly.ProjectID_Ref}</span>
                       </div>
 
-                      <div className="bg-gray-50 rounded-lg p-4 mb-3">
-                        <p className="text-sm font-semibold text-gray-700 mb-2">🤖 AI 분석 결과:</p>
-                        <p className="text-sm text-gray-900">{anomaly.AI_Reasoning}</p>
+                      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-4 mb-3 border border-blue-100">
+                        <div className="flex items-start gap-2">
+                          <span className="text-lg mt-0.5">🤖</span>
+                          <div>
+                            <p className="text-sm font-bold text-blue-900 mb-1">AI 분석 결과</p>
+                            <p className="text-sm text-gray-900">{anomaly.AI_Reasoning}</p>
+                          </div>
+                        </div>
                       </div>
 
-                      <div className="flex items-center gap-4 text-sm text-gray-500">
-                        <div>
-                          <span className="font-semibold">탐지 시간:</span>{' '}
-                          {new Date(anomaly.Timestamp).toLocaleString('ko-KR')}
+                      <div className="flex items-center gap-4 text-xs text-gray-500">
+                        <div className="flex items-center gap-1">
+                          <span className="font-semibold">📅 탐지 시간:</span>
+                          <span>{new Date(anomaly.Timestamp).toLocaleString('ko-KR')}</span>
                         </div>
-                        <div>
-                          <span className="font-semibold">이상 징후 ID:</span> {anomaly.AnomalyID}
+                        <div className="flex items-center gap-1">
+                          <span className="font-semibold">🔖 ID:</span>
+                          <span>{anomaly.AnomalyID}</span>
                         </div>
                       </div>
                     </div>
 
                     <Link
                       href={`/anomalies/${anomaly.AnomalyID}`}
-                      className="ml-6 px-5 py-2.5 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 shadow-lg hover:shadow-xl transition-all font-semibold whitespace-nowrap"
+                      className="ml-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl hover:from-blue-600 hover:to-blue-700 shadow-lg hover:shadow-xl hover:scale-105 transition-all font-semibold whitespace-nowrap"
                     >
                       상세보기 →
                     </Link>

@@ -124,8 +124,12 @@ export default function DashboardClientEnhanced() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex justify-between items-center">
             <div>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-1.5 rounded-full text-xs font-bold mb-2 shadow-md">
+                <span>🏆</span>
+                <span>달성군 정책 제안 공모전 출품작</span>
+              </div>
               <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                달성군 선셋 프로토콜
+                선셋 프로토콜 대시보드
               </h1>
               <p className="mt-2 text-sm text-gray-600 font-medium">
                 🤖 AI 기반 예산 낭비 선제적 차단 시스템
@@ -159,57 +163,83 @@ export default function DashboardClientEnhanced() {
         {/* KPI Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {/* 신규 이상 징후 */}
-          <div className="bg-gradient-to-br from-red-500 to-red-600 rounded-2xl shadow-2xl p-6 text-white transform hover:scale-105 transition-transform">
-            <div className="flex items-center justify-between">
+          <div className="group relative bg-gradient-to-br from-red-500 via-red-600 to-red-700 rounded-3xl shadow-2xl p-6 text-white transform hover:scale-105 transition-all duration-300 overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+            <div className="relative z-10">
+              <div className="flex items-start justify-between mb-4">
+                <div className="p-3 bg-white/20 backdrop-blur-sm rounded-xl">
+                  <span className="text-4xl">⚠️</span>
+                </div>
+                <div className="text-right">
+                  <p className="text-red-100 text-xs font-semibold uppercase tracking-wide">Alert</p>
+                </div>
+              </div>
               <div>
-                <p className="text-red-100 text-sm font-medium">신규 이상 징후</p>
-                <p className="text-5xl font-bold mt-2">{data.kpis.newAnomaliesCount}</p>
-                <p className="text-red-100 text-xs mt-2">AI 탐지 건수</p>
+                <p className="text-red-50 text-sm font-medium mb-1">신규 이상 징후</p>
+                <p className="text-6xl font-extrabold mb-2">{data.kpis.newAnomaliesCount}</p>
+                <p className="text-red-100 text-sm font-medium">AI 탐지 건수</p>
               </div>
-              <div className="p-4 bg-white bg-opacity-20 rounded-xl flex items-center justify-center">
-                <span className="text-5xl">⚠️</span>
+              <div className="mt-6 pt-4 border-t border-red-400/50">
+                <Link
+                  href="/anomalies"
+                  className="inline-flex items-center gap-2 text-sm font-bold hover:gap-3 transition-all"
+                >
+                  <span>상세보기</span>
+                  <span>→</span>
+                </Link>
               </div>
-            </div>
-            <div className="mt-4 pt-4 border-t border-red-400">
-              <Link href="/anomalies" className="text-sm font-semibold hover:underline flex items-center gap-2">
-                상세보기 →
-              </Link>
             </div>
           </div>
 
           {/* 90일 내 일몰 도래 */}
-          <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl shadow-2xl p-6 text-white transform hover:scale-105 transition-transform">
-            <div className="flex items-center justify-between">
+          <div className="group relative bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 rounded-3xl shadow-2xl p-6 text-white transform hover:scale-105 transition-all duration-300 overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+            <div className="relative z-10">
+              <div className="flex items-start justify-between mb-4">
+                <div className="p-3 bg-white/20 backdrop-blur-sm rounded-xl">
+                  <span className="text-4xl">⏰</span>
+                </div>
+                <div className="text-right">
+                  <p className="text-orange-100 text-xs font-semibold uppercase tracking-wide">Warning</p>
+                </div>
+              </div>
               <div>
-                <p className="text-orange-100 text-sm font-medium">90일 내 일몰 도래</p>
-                <p className="text-5xl font-bold mt-2">{data.kpis.upcomingSunsetsCount}</p>
-                <p className="text-orange-100 text-xs mt-2">사업 종료 예정</p>
+                <p className="text-orange-50 text-sm font-medium mb-1">90일 내 일몰 도래</p>
+                <p className="text-6xl font-extrabold mb-2">{data.kpis.upcomingSunsetsCount}</p>
+                <p className="text-orange-100 text-sm font-medium">사업 종료 예정</p>
               </div>
-              <div className="p-4 bg-white bg-opacity-20 rounded-xl flex items-center justify-center">
-                <span className="text-5xl">⏰</span>
+              <div className="mt-6 pt-4 border-t border-orange-400/50">
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center gap-2 text-sm font-bold hover:gap-3 transition-all"
+                >
+                  <span>사업 목록</span>
+                  <span>→</span>
+                </Link>
               </div>
-            </div>
-            <div className="mt-4 pt-4 border-t border-orange-400">
-              <Link href="/projects" className="text-sm font-semibold hover:underline flex items-center gap-2">
-                사업 목록 →
-              </Link>
             </div>
           </div>
 
           {/* 심사 대기 중 */}
-          <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl shadow-2xl p-6 text-white transform hover:scale-105 transition-transform">
-            <div className="flex items-center justify-between">
+          <div className="group relative bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-3xl shadow-2xl p-6 text-white transform hover:scale-105 transition-all duration-300 overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+            <div className="relative z-10">
+              <div className="flex items-start justify-between mb-4">
+                <div className="p-3 bg-white/20 backdrop-blur-sm rounded-xl">
+                  <span className="text-4xl">📋</span>
+                </div>
+                <div className="text-right">
+                  <p className="text-blue-100 text-xs font-semibold uppercase tracking-wide">Review</p>
+                </div>
+              </div>
               <div>
-                <p className="text-blue-100 text-sm font-medium">심사 대기 중</p>
-                <p className="text-5xl font-bold mt-2">{data.kpis.pendingReviewsCount}</p>
-                <p className="text-blue-100 text-xs mt-2">일몰 심사 필요</p>
+                <p className="text-blue-50 text-sm font-medium mb-1">심사 대기 중</p>
+                <p className="text-6xl font-extrabold mb-2">{data.kpis.pendingReviewsCount}</p>
+                <p className="text-blue-100 text-sm font-medium">일몰 심사 필요</p>
               </div>
-              <div className="p-4 bg-white bg-opacity-20 rounded-xl flex items-center justify-center">
-                <span className="text-5xl">📋</span>
+              <div className="mt-6 pt-4 border-t border-blue-400/50">
+                <p className="text-sm font-bold">감사관 결재 필요</p>
               </div>
-            </div>
-            <div className="mt-4 pt-4 border-t border-blue-400">
-              <p className="text-sm font-semibold">감사관 결재 필요</p>
             </div>
           </div>
         </div>
@@ -217,9 +247,9 @@ export default function DashboardClientEnhanced() {
         {/* Statistics Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           {/* Anomaly Statistics */}
-          <div className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
+          <div className="bg-white rounded-3xl shadow-xl p-6 border border-gray-100 hover:shadow-2xl transition-shadow">
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-red-100 rounded-xl">
+              <div className="p-3 bg-gradient-to-br from-red-100 to-red-200 rounded-xl shadow-md">
                 <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
@@ -291,9 +321,9 @@ export default function DashboardClientEnhanced() {
           </div>
 
           {/* Project Statistics */}
-          <div className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
+          <div className="bg-white rounded-3xl shadow-xl p-6 border border-gray-100 hover:shadow-2xl transition-shadow">
             <div className="flex items-center gap-3 mb-6">
-              <div className="p-3 bg-green-100 rounded-xl">
+              <div className="p-3 bg-gradient-to-br from-green-100 to-green-200 rounded-xl shadow-md">
                 <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                 </svg>
@@ -339,15 +369,21 @@ export default function DashboardClientEnhanced() {
         </div>
 
         {/* Recent Anomalies */}
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 mb-8">
-          <div className="p-6 border-b border-gray-200">
+        <div className="bg-white rounded-3xl shadow-xl border border-gray-100 mb-8 overflow-hidden">
+          <div className="p-6 bg-gradient-to-r from-red-50 to-orange-50 border-b border-gray-200">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-gray-900">🚨 신규 이상 징후 (위험도 순)</h2>
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-red-100 rounded-xl">
+                  <span className="text-2xl">🚨</span>
+                </div>
+                <h2 className="text-2xl font-bold text-gray-900">신규 이상 징후 (위험도 순)</h2>
+              </div>
               <Link
                 href="/anomalies"
-                className="text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                className="text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 hover:gap-2 transition-all"
               >
-                전체 보기 →
+                <span>전체 보기</span>
+                <span>→</span>
               </Link>
             </div>
           </div>
@@ -446,15 +482,21 @@ export default function DashboardClientEnhanced() {
         </div>
 
         {/* Upcoming Sunsets */}
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100">
-          <div className="p-6 border-b border-gray-200">
+        <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+          <div className="p-6 bg-gradient-to-r from-orange-50 to-yellow-50 border-b border-gray-200">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-gray-900">⏰ 90일 내 일몰 도래 사업</h2>
+              <div className="flex items-center gap-3">
+                <div className="p-2 bg-orange-100 rounded-xl">
+                  <span className="text-2xl">⏰</span>
+                </div>
+                <h2 className="text-2xl font-bold text-gray-900">90일 내 일몰 도래 사업</h2>
+              </div>
               <Link
                 href="/projects"
-                className="text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                className="text-sm font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 hover:gap-2 transition-all"
               >
-                전체 보기 →
+                <span>전체 보기</span>
+                <span>→</span>
               </Link>
             </div>
           </div>

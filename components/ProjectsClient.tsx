@@ -54,6 +54,10 @@ export default function ProjectsClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex justify-between items-center">
             <div>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-blue-600 text-white px-4 py-1.5 rounded-full text-xs font-bold mb-2 shadow-md">
+                <span>🏆</span>
+                <span>달성군 정책 제안 공모전 출품작</span>
+              </div>
               <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
                 정책 사업 관리
               </h1>
@@ -88,48 +92,77 @@ export default function ProjectsClient() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl shadow-xl p-6 text-white">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-green-100 text-sm font-medium">전체 사업</p>
-                <p className="text-4xl font-bold mt-2">{projects.length}</p>
-                <p className="text-green-100 text-xs mt-2">진행 중</p>
+          <div className="group relative bg-gradient-to-br from-green-500 via-green-600 to-green-700 rounded-3xl shadow-2xl p-6 text-white transform hover:scale-105 transition-all duration-300 overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+            <div className="relative z-10">
+              <div className="flex items-start justify-between mb-4">
+                <div className="p-3 bg-white/20 backdrop-blur-sm rounded-xl">
+                  <span className="text-4xl">📊</span>
+                </div>
+                <div className="text-right">
+                  <p className="text-green-100 text-xs font-semibold uppercase tracking-wide">Total</p>
+                </div>
               </div>
-              <span className="text-5xl">📊</span>
+              <div>
+                <p className="text-green-50 text-sm font-medium mb-1">전체 사업</p>
+                <p className="text-6xl font-extrabold mb-2">{projects.length}</p>
+                <p className="text-green-100 text-sm font-medium">진행 중</p>
+              </div>
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl shadow-xl p-6 text-white">
-            <div className="flex items-center justify-between">
+          <div className="group relative bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 rounded-3xl shadow-2xl p-6 text-white transform hover:scale-105 transition-all duration-300 overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+            <div className="relative z-10">
+              <div className="flex items-start justify-between mb-4">
+                <div className="p-3 bg-white/20 backdrop-blur-sm rounded-xl">
+                  <span className="text-4xl">⏰</span>
+                </div>
+                <div className="text-right">
+                  <p className="text-orange-100 text-xs font-semibold uppercase tracking-wide">Urgent</p>
+                </div>
+              </div>
               <div>
-                <p className="text-orange-100 text-sm font-medium">90일 내 일몰</p>
-                <p className="text-4xl font-bold mt-2">
+                <p className="text-orange-50 text-sm font-medium mb-1">90일 내 일몰</p>
+                <p className="text-6xl font-extrabold mb-2">
                   {projects.filter((p) => getDaysUntilSunset(p.SunsetDate) <= 90 && getDaysUntilSunset(p.SunsetDate) > 0).length}
                 </p>
-                <p className="text-orange-100 text-xs mt-2">검토 필요</p>
+                <p className="text-orange-100 text-sm font-medium">검토 필요</p>
               </div>
-              <span className="text-5xl">⏰</span>
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl shadow-xl p-6 text-white">
-            <div className="flex items-center justify-between">
+          <div className="group relative bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-3xl shadow-2xl p-6 text-white transform hover:scale-105 transition-all duration-300 overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 group-hover:scale-150 transition-transform duration-500"></div>
+            <div className="relative z-10">
+              <div className="flex items-start justify-between mb-4">
+                <div className="p-3 bg-white/20 backdrop-blur-sm rounded-xl">
+                  <span className="text-4xl">💰</span>
+                </div>
+                <div className="text-right">
+                  <p className="text-blue-100 text-xs font-semibold uppercase tracking-wide">Budget</p>
+                </div>
+              </div>
               <div>
-                <p className="text-blue-100 text-sm font-medium">총 예산</p>
-                <p className="text-2xl font-bold mt-2">
+                <p className="text-blue-50 text-sm font-medium mb-1">총 예산</p>
+                <p className="text-5xl font-extrabold mb-2">
                   {(projects.reduce((sum, p) => sum + p.TotalBudget, 0) / 100000000).toFixed(1)}억
                 </p>
-                <p className="text-blue-100 text-xs mt-2">원</p>
+                <p className="text-blue-100 text-sm font-medium">원</p>
               </div>
-              <span className="text-5xl">💰</span>
             </div>
           </div>
         </div>
 
         {/* Projects Table */}
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div className="bg-white rounded-3xl shadow-xl overflow-hidden">
           <div className="p-6 bg-gradient-to-r from-green-500 to-blue-500 text-white">
-            <h2 className="text-2xl font-bold">🗂️ 진행 중인 사업 목록</h2>
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-white/20 backdrop-blur-sm rounded-xl">
+                <span className="text-2xl">🗂️</span>
+              </div>
+              <h2 className="text-2xl font-bold">진행 중인 사업 목록</h2>
+            </div>
           </div>
 
           {projects.length === 0 ? (
@@ -223,18 +256,27 @@ export default function ProjectsClient() {
         </div>
 
         {/* Info Box */}
-        <div className="mt-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl shadow-lg p-6 border border-blue-100">
+        <div className="mt-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl shadow-xl p-8 border border-blue-200">
           <div className="flex items-start gap-4">
-            <span className="text-4xl">💡</span>
+            <div className="p-3 bg-blue-100 rounded-xl">
+              <span className="text-4xl">💡</span>
+            </div>
             <div>
-              <h3 className="text-lg font-bold text-gray-900 mb-2">정책 일몰제란?</h3>
-              <p className="text-sm text-gray-700 mb-2">
-                모든 신규 정책 사업은 시작일로부터 <strong>3년 후 자동으로 일몰</strong>됩니다.
-              </p>
-              <p className="text-sm text-gray-700">
-                사업 연장을 원할 경우, 일몰 예정일 <strong>90일 전</strong>까지 성과 보고서를 제출하여
-                감사관의 승인을 받아야 합니다.
-              </p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">정책 일몰제란?</h3>
+              <div className="space-y-2">
+                <p className="text-sm text-gray-700 flex items-start gap-2">
+                  <span className="text-blue-600 font-bold mt-0.5">•</span>
+                  <span>모든 신규 정책 사업은 시작일로부터 <strong className="text-blue-900">3년 후 자동으로 일몰</strong>됩니다.</span>
+                </p>
+                <p className="text-sm text-gray-700 flex items-start gap-2">
+                  <span className="text-blue-600 font-bold mt-0.5">•</span>
+                  <span>사업 연장을 원할 경우, 일몰 예정일 <strong className="text-blue-900">90일 전</strong>까지 성과 보고서를 제출하여 감사관의 승인을 받아야 합니다.</span>
+                </p>
+                <p className="text-sm text-gray-700 flex items-start gap-2">
+                  <span className="text-blue-600 font-bold mt-0.5">•</span>
+                  <span>AI 감사 시스템이 24시간 예산 집행을 모니터링하여 <strong className="text-blue-900">선제적으로 낭비를 차단</strong>합니다.</span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
