@@ -73,8 +73,12 @@ export default async function AboutPage() {
             </p>
             <div className="mt-8 flex justify-center gap-4">
               <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-xl border border-white/30">
-                <p className="text-sm text-indigo-100">제안 부서</p>
-                <p className="text-lg font-bold">혁신행정팀</p>
+                <p className="text-sm text-indigo-100">제안자</p>
+                <p className="text-lg font-bold">박용환</p>
+              </div>
+              <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-xl border border-white/30">
+                <p className="text-sm text-indigo-100">소속</p>
+                <p className="text-lg font-bold">크리에이티브 넥서스</p>
               </div>
               <div className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded-xl border border-white/30">
                 <p className="text-sm text-indigo-100">제안 연도</p>
