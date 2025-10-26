@@ -44,14 +44,6 @@ export default function SignIn() {
               Google 계정으로 로그인
             </button>
           </form>
-
-          <div className="mt-6 text-center text-xs text-gray-500">
-            <p>
-              로그인 시{' '}
-              <span className="font-semibold">@dalseong.go.kr</span>{' '}
-              이메일 주소가 필요합니다
-            </p>
-          </div>
         </div>
 
         <div className="mt-8 border-t border-gray-200 pt-6">
