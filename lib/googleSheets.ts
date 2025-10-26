@@ -99,7 +99,7 @@ export const getAnomalyById = async (anomalyId: string): Promise<Anomaly | null>
 
 export const getUnprocessedTransactions = async (): Promise<Transaction[]> => {
   const transactions = await getTransactions();
-  return transactions.filter(t => !t.Status || t.Status === '');
+  return transactions.filter(t => !t.Status || t.Status !== 'Processed');
 };
 
 export const getNewAnomalies = async (): Promise<Anomaly[]> => {
@@ -122,7 +122,7 @@ export const getUpcomingSunsets = async (daysThreshold: number = 90): Promise<Pr
 
 export const getPendingReviews = async (): Promise<SunsetReview[]> => {
   const reviews = await getSunsetReviews();
-  return reviews.filter(r => !r.Decision || r.Decision === '');
+  return reviews.filter(r => !r.Decision);
 };
 
 // ===== Write Operations =====
@@ -210,7 +210,7 @@ export const markTransactionsProcessed = async (transactionIds: string[]): Promi
       };
     }
     return null;
-  }).filter(Boolean);
+  }).filter((u): u is { range: string; values: string[][] } => u !== null);
 
   if (updates.length > 0) {
     await sheets.spreadsheets.values.batchUpdate({

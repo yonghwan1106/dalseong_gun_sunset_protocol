@@ -15,7 +15,7 @@ import type { AnomalyWithDetails } from '@/types';
  */
 export async function GET(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await auth();
@@ -24,7 +24,8 @@ export async function GET(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const anomalyId = params.id;
+    const { id } = await params;
+    const anomalyId = id;
     const anomaly = await getAnomalyById(anomalyId);
 
     if (!anomaly) {
@@ -66,7 +67,7 @@ export async function GET(
  */
 export async function PATCH(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const session = await auth();
@@ -75,7 +76,8 @@ export async function PATCH(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const anomalyId = params.id;
+    const { id } = await params;
+    const anomalyId = id;
     const body = await request.json();
     const { status } = body;
 
