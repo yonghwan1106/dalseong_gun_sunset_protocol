@@ -44,7 +44,13 @@ export const SHEET_NAMES = {
 const rowToObject = <T>(headers: string[], row: any[]): T => {
   const obj: any = {};
   headers.forEach((header, index) => {
-    obj[header] = row[index] || '';
+    const value = row[index];
+    // Convert numeric fields to integers
+    if (header === 'TotalBudget' || header === 'Amount' || header === 'RiskScore') {
+      obj[header] = value ? Math.round(Number(value)) : 0;
+    } else {
+      obj[header] = value || '';
+    }
   });
   return obj as T;
 };
