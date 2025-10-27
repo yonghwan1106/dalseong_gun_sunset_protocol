@@ -146,7 +146,7 @@ export default function ProjectsClient() {
               <div>
                 <p className="text-blue-50 text-sm font-medium mb-1">총 예산</p>
                 <p className="text-5xl font-extrabold mb-2">
-                  {Math.round(projects.reduce((sum, p) => sum + p.TotalBudget, 0)) / 100000000}
+                  {(Math.round(projects.reduce((sum, p) => sum + p.TotalBudget, 0)) / 100000000).toFixed(0)}
                 </p>
                 <p className="text-blue-100 text-sm font-medium">억원</p>
               </div>
